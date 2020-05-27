@@ -299,6 +299,9 @@ function showConfigurationProfiles(configurationProfiles) {
   var headerrow = document.createElement('tr');
   thead.appendChild(headerrow);
 
+  var idname = createElement('th', null, 'ID');
+  headerrow.appendChild(idname);
+
   var displayname = createElement('th', null, 'Display Name');
   // organizer.setAttribute('scope', 'col');
   headerrow.appendChild(displayname);
@@ -310,6 +313,9 @@ function showConfigurationProfiles(configurationProfiles) {
     var configrow = document.createElement('tr');
     configrow.setAttribute('key', configuration.id);
     tbody.appendChild(configrow);
+
+    var idcell = createElement('td', null, configuration.id);
+    configrow.appendChild(idcell);
 
     var namecell = createElement('td', null, configuration.displayName);
     configrow.appendChild(namecell);

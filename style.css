@@ -5,3 +5,18 @@ body {
 .navbar-brand {
     font-size: 30px;
 }
+
+h1 {
+    font-size: 25px;
+}
+
+
+  
+h4 {
+margin: 2rem 0rem 1rem;
+}
+
+.custom-control-input {
+    position: relative;
+    left: 20px;
+}

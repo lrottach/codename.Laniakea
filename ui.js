@@ -286,11 +286,19 @@ function showCalendar(events) {
 
 function showConfigurationProfiles(configurationProfiles) {
 
-  var div = document.createElement('div');
+  var containerdiv = document.createElement('div');
+  containerdiv.setAttribute('class', 'container');
 
-  div.appendChild(createElement('h1', null, 'Configuration Profiles'));
+  var rowdiv = document.createElement('div');
+  rowdiv.setAttribute('class', 'row');
+
+  var div = document.createElement('div');
+  div.setAttribute('class', 'col-12');
+
+  containerdiv.appendChild(createElement('h1', null, 'Configuration Profiles'));
 
   var table = createElement('table', 'table');
+  table.setAttribute('class', 'table table-bordered')
   div.appendChild(table);
 
   var thead = document.createElement('thead');
@@ -299,7 +307,10 @@ function showConfigurationProfiles(configurationProfiles) {
   var headerrow = document.createElement('tr');
   thead.appendChild(headerrow);
 
-  var idname = createElement('th', null, 'ID');
+  var selection = createElement('th', null, 'Selection');
+  headerrow.appendChild(selection);
+
+  var idname = createElement('th', null, 'Id');
   headerrow.appendChild(idname);
 
   var displayname = createElement('th', null, 'Display Name');
@@ -309,16 +320,44 @@ function showConfigurationProfiles(configurationProfiles) {
   var tbody = document.createElement('tbody');
   table.appendChild(tbody);
 
+  var rowCount = 1;
+
   for (const configuration of configurationProfiles.value) {
+
+    // Counter to name check boxes
+    var customCheck = 'customCheck' + rowCount;
+
     var configrow = document.createElement('tr');
     configrow.setAttribute('key', configuration.id);
     tbody.appendChild(configrow);
+
+    var configdiv = document.createElement('div');
+    configdiv.setAttribute('class', 'custom-control custom-checkbox');
+
+    var configInput = document.createElement('input');
+    configInput.setAttribute('type', 'checkbox');
+    configInput.setAttribute('class', 'custom-control-input');
+    configInput.setAttribute('id', customCheck);
+    configdiv.appendChild(configInput);
+
+    var configLabel = document.createElement('label', rowCount);
+    configLabel.setAttribute('class', 'custom-control-label');
+    configLabel.setAttribute('for', customCheck);
+    configdiv.appendChild(configLabel);
+
+    // configrow.appendChild(configdiv);
+
+    var selectioncell = createElement('td');
+    selectioncell.appendChild(configdiv);
+    configrow.appendChild(selectioncell);
 
     var idcell = createElement('td', null, configuration.id);
     configrow.appendChild(idcell);
 
     var namecell = createElement('td', null, configuration.displayName);
     configrow.appendChild(namecell);
+
+    rowCount++;
   }
 
   mainContainer.innerHTML = '';

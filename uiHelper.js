@@ -1,5 +1,18 @@
 function getSelection(tableId) {
-  //To be definded
+  let grid = document.getElementById(tableId);
+  let checkBoxes = grid.getElementsByTagName('INPUT');
+
+  // Loop through the checkboxes
+  let result = {};
+  for (let index = 0; index < checkBoxes.length; index++) {
+    
+    if (checkBoxes[index].checked) {
+      let row = checkBoxes[index].parentNode.parentNode.parentNode;
+      result += row.cells[1].innerHTML;
+    }
+  }
+
+  return result;
 }
 
 // Show calendar page
@@ -63,6 +76,8 @@ function showCalendar(events) {
   // Show device configuration page
   function showConfigurationProfiles(configurationProfiles) {
   
+    const tableId = 'configTable';
+
     var containerdiv = document.createElement('div');
     containerdiv.setAttribute('class', 'container');
   
@@ -75,7 +90,8 @@ function showCalendar(events) {
     containerdiv.appendChild(createElement('h1', null, 'Configuration Profiles'));
   
     var table = createElement('table', 'table');
-    table.setAttribute('class', 'table table-bordered')
+    table.setAttribute('class', 'table table-bordered');
+    table.setAttribute('id', tableId);
     div.appendChild(table);
   
     var thead = document.createElement('thead');
@@ -139,7 +155,8 @@ function showCalendar(events) {
 
     //Get bottom HTML div
     let exportButton = createElement('button', 'btn btn-primary btn-large', 'Export');
-    exportButton.setAttribute('onclick', 'exportContent();');
+    exportButton.setAttribute('id', 'exportButton');
+    exportButton.setAttribute('onclick', 'getSelection();');
     div.appendChild(exportButton);
 
     mainContainer.innerHTML = '';

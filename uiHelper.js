@@ -2,13 +2,15 @@ function getSelection(tableId) {
   let grid = document.getElementById(tableId);
   let checkBoxes = grid.getElementsByTagName('INPUT');
 
+  // Initialize array
+  let result = [];
+
   // Loop through the checkboxes
-  let result = {};
   for (let index = 0; index < checkBoxes.length; index++) {
     
     if (checkBoxes[index].checked) {
       let row = checkBoxes[index].parentNode.parentNode.parentNode;
-      result += row.cells[1].innerHTML;
+      result.push(row.cells[1].innerHTML);
     }
   }
 

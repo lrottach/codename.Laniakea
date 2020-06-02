@@ -132,7 +132,12 @@ function showCalendar(events) {
   
       rowCount++;
     }
-  
+
+    //Get bottom HTML div
+    let exportButton = createElement('button', 'btn btn-primary btn-large', 'Export');
+    exportButton.setAttribute('onclick', 'exportContent();');
+    div.appendChild(exportButton);
+
     mainContainer.innerHTML = '';
     mainContainer.appendChild(div);
   }

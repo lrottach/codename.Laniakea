@@ -1,3 +1,7 @@
+function getSelection(tableId) {
+  //To be definded
+}
+
 // Show calendar page
 function showCalendar(events) {
     var div = document.createElement('div');

@@ -1,16 +1,15 @@
 import React from "react";
+import './styles/App.css'
 
 const App = () => (
-    <React.Fragment>
-        <div className="app">
-            <div className="header"></div>
-            <div className="body">
-                <div className="content"></div>
-                <div className="sidebar"></div>
-            </div>
-            <div className="footer"></div>
+    <div className="App">
+        <div className="header"></div>
+        <div className="body">
+            <div className="content"></div>
+            <div className="sidebar"></div>
         </div>
-    </React.Fragment>
+        <div className="footer"></div>
+    </div>
 )
 
 export default App;
